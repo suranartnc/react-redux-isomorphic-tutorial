@@ -8,10 +8,10 @@ const environment = {
   },
   production: {
     isProduction: true,
-    host: process.env.HOST || '',
-    port: process.env.PORT || 80,
-    apiHost: process.env.APIHOST || '',
-    apiPort: process.env.APIPORT || 80
+    host: process.env.HOST || 'localhost',
+    port: process.env.PORT || 3000,
+    apiHost: process.env.APIHOST || 'localhost',
+    apiPort: process.env.APIPORT || 3001
   }
 }[process.env.NODE_ENV || 'development'];
 

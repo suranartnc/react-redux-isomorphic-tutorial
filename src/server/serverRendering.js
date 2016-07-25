@@ -1,4 +1,5 @@
 export default function(req, res) {
+  const assets = require('../../static/build/assets.json');
   const HTML = `
     <!DOCTYPE html>
     <html lang="en">
@@ -9,7 +10,7 @@ export default function(req, res) {
       </head>
       <body>
         <div id="root"></div>
-        <script src="/build/main.js"></script>
+        <script src="${assets.main.js}"></script>
       </body>
     </html>    
   `;

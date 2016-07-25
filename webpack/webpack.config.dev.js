@@ -1,19 +1,20 @@
 var path = require('path');
 var webpack = require('webpack');
+var AssetsPlugin = require('assets-webpack-plugin');
 
 module.exports = {
 
-  devtool: 'eval-source-map',
+  devtool: 'cheap-module-eval-source-map',
 
   entry: [
     'webpack-hot-middleware/client',
-    path.join(__dirname, 'src/client.js')
+    path.join(process.cwd(), 'src/client.js')
   ],
 
   output: {
     filename: '[name].js',
     chunkFilename: "[name].js",
-    path: path.join(__dirname, 'static', 'build'),
+    path: path.join(process.cwd(), 'static', 'build'),
     publicPath: '/build/'
   },
 
@@ -33,8 +34,8 @@ module.exports = {
   resolve: {
     extensions: ['', '.json', '.js', '.jsx'],
     root: [
-      path.join(__dirname, 'src'),
-      path.join(__dirname, 'node_modules')
+      path.join(process.cwd(), 'src'),
+      path.join(process.cwd(), 'node_modules')
     ]
   },
 
@@ -46,6 +47,11 @@ module.exports = {
         'NODE_ENV': JSON.stringify('development'),
         'BROWSER': true
       }
+    }),
+    new AssetsPlugin({
+      filename: 'assets.json',
+      path: path.join(process.cwd(), 'static', 'build'),
+      prettyPrint: true
     })
   ]
 };
