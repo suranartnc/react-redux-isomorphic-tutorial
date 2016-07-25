@@ -1,13 +1,13 @@
-const initialState = [
-  {
-    id: 1,
-    title: 'Title 1'
-  }, {
-    id: 2,
-    title: 'Title 2'
-  }
-]
+import * as actionTypes from './actionTypes';
+
+const initialState = [];
 
 export default function(state = initialState, action) {
+  switch(action.type) {
+  	case actionTypes.POST_GET_LATEST:
+  		return action.data;
+  	default:
+  		return state;
+  }
   return state;
 }

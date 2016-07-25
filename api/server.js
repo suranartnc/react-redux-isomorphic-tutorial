@@ -1,7 +1,9 @@
+import config from '../src/shared/configs';
+
 import jsonServer from 'json-server';
 import db from './db';
 
-const port = 3034;
+const port = config.apiPort;
 
 const server = jsonServer.create();
 const router = jsonServer.router(db());

@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import * as postActions from 'shared/modules/post/postActions';
+
 class HomePage extends Component {
+
+  componentDidMount() {
+    this.props.getPostLatest();
+  }
 
   render() {
     const { posts } = this.props
@@ -9,7 +15,7 @@ class HomePage extends Component {
       <div>
         {posts.map((post, index) => {
           return (
-            <article id={post.id}>
+            <article key={post.id}>
               <h3>{post.title}</h3>
             </article>
           );
@@ -25,4 +31,4 @@ function mapStateToProps({ post }) {
   }
 }
 
-export default connect(mapStateToProps)(HomePage);
+export default connect(mapStateToProps, postActions)(HomePage);
