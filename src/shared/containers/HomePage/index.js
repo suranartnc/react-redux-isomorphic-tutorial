@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router';
 import { connect } from 'react-redux'
 
 import * as postActions from 'shared/modules/post/postActions';
@@ -16,7 +17,7 @@ class HomePage extends Component {
         {posts.map((post, index) => {
           return (
             <article key={post.id}>
-              <h3>{post.title}</h3>
+              <h3><Link to={`/post/${post.id}`}>{post.title}</Link></h3>
             </article>
           );
         })}

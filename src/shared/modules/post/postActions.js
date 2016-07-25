@@ -8,3 +8,12 @@ export function getPostLatest(limit = 20) {
     }
   };
 }
+
+export function getPostById(id) {
+  return {
+    type: actionTypes.POST_GET_BY_ID,
+    request: {
+      path: `/posts/${id}`
+    }
+  };
+}
