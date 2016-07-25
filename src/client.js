@@ -1,12 +1,16 @@
-import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-class App extends Component {
-	render() {
-		return (
-	        <div>It works</div>
-	    )
-	}
-}
+import { browserHistory, Router } from 'react-router';
+import routes from 'shared/routes';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import { Provider } from 'react-redux';
+import createStore from 'shared/store/createStore';
+
+const store = createStore();
+
+ReactDOM.render(
+  <Provider store={store}>
+    <Router history={browserHistory} routes={routes} />
+  </Provider>, 
+  document.getElementById('root'));

@@ -3,7 +3,6 @@ var webpack = require('webpack');
 
 module.exports = {
 
-  cache: true,
   devtool: 'eval-source-map',
 
   entry: [

@@ -1,0 +1,1 @@
+export const POST_GET_LATEST = 'POST_GET_LATEST';
