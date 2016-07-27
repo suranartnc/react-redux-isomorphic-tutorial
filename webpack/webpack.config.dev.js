@@ -8,6 +8,7 @@ module.exports = {
 
   entry: [
     'webpack-hot-middleware/client',
+    'bootstrap-loader',
     path.join(process.cwd(), 'src/client.js')
   ],
 
@@ -27,6 +28,24 @@ module.exports = {
         query: {
           presets: ['react-hmre']
         }
+      }, {
+        test: /\.css$/,
+        loader: 'style!css'
+      }, {
+        test: /\.scss$/,
+        loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass?outputStyle=expanded&sourceMap!sass-resources'
+      }, {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        loader: 'file-loader',
+      }, {
+        test: /\.(jpg|png|gif)$/,
+        loaders: [
+          'file-loader',
+          'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}',
+        ],
+      }, {
+        test: /\.json$/,
+        loader: 'json-loader',
       }
     ]
   },
@@ -53,5 +72,13 @@ module.exports = {
       path: path.join(process.cwd(), 'static', 'build'),
       prettyPrint: true
     })
+  ],
+
+  postcss: [],
+
+  sassResources: [
+    './src/shared/styles/variables.scss',
+    './src/shared/styles/mixins.scss',
+    './src/shared/styles/placeholder.scss'
   ]
 };

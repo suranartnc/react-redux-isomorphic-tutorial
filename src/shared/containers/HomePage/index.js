@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 
 import * as postActions from 'shared/modules/post/postActions';
 
+import styles from './Home.scss';
+
 class HomePage extends Component {
 
   componentDidMount() {
@@ -13,14 +15,16 @@ class HomePage extends Component {
   render() {
     const { posts } = this.props
     return (
-      <div>
-        {posts.map((post, index) => {
-          return (
-            <article key={post.id}>
-              <h3><Link to={`/post/${post.id}`}>{post.title}</Link></h3>
-            </article>
-          );
-        })}
+      <div className="container">
+        <div className="row">
+          {posts.map((post, index) => {
+            return (
+              <article className={`col-md-6 ${styles['article']}`} key={post.id}>
+                <h3><Link to={`/post/${post.id}`}>{post.title}</Link></h3>
+              </article>
+            );
+          })}
+        </div>
       </div>
     );
   }

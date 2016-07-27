@@ -1,0 +1,29 @@
+// Clearfix
+@mixin clearfix() {
+    &:before,
+    &:after {
+        content: " "; // 1
+        display: table; // 2
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+// ===========================================================================================
+//   @ min-screen(width)                      // shortcut for @media screen and (min-width ...)
+//   @ max-screen(width)                      // shortcut for @media screen and (max-width ...)
+
+@mixin max-screen($res) {
+    @media screen and (max-width: $res)
+    {
+        @content;
+    }
+}
+
+@mixin min-screen($res){
+    @media screen and (min-width: $res)
+    {
+        @content;
+    }
+}
