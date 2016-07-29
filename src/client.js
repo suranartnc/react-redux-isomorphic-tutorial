@@ -10,7 +10,7 @@ import createStore from 'shared/store/createStore';
 
 const store = createStore();
 
-import DevTools from 'shared/components/DevTools';
+import { DevTools } from 'shared/components';
 
 ReactDOM.render(
   <Provider store={store}>

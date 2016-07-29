@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 
 import * as postActions from 'shared/modules/post/postActions';
 
+import { Page } from 'shared/components';
+
 class EntryPage extends Component {
 
   componentDidMount() {
@@ -28,4 +30,4 @@ function mapStateToProps({ post }) {
   }
 }
 
-export default connect(mapStateToProps, postActions)(EntryPage);
+export default connect(mapStateToProps, postActions)(Page()(EntryPage));

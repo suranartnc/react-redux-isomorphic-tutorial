@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from 'shared/containers/App/Header';
 
-const createPage = (initialState) => (BaseComponent) => {
+const createPage = (initialState = {}) => (BaseComponent) => {
 	class Page extends Component {
 		constructor(props) {
 		    super(props);

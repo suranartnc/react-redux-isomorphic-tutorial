@@ -3,8 +3,7 @@ import { connect } from 'react-redux'
 
 import * as postActions from 'shared/modules/post/postActions';
 
-import Page from 'shared/components/Page';
-import Post from 'shared/components/Post';
+import { Page, Post } from 'shared/components';
 import styles from './Home.scss';
 
 class HomePage extends Component {
