@@ -7,6 +7,7 @@ export default function(req, res) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>React Redux Isomorphic Tutorial</title>
+        ${assets.main.css ? '<link rel="stylesheet" href="' + assets.main.css + '" />' : ''}
       </head>
       <body>
         <div id="root"></div>
