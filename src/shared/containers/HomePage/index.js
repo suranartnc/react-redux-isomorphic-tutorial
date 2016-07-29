@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router';
 import { connect } from 'react-redux'
 
 import * as postActions from 'shared/modules/post/postActions';
 
 import Page from 'shared/components/Page';
+import Post from 'shared/components/Post';
 import styles from './Home.scss';
 
 class HomePage extends Component {
@@ -19,9 +19,9 @@ class HomePage extends Component {
       <div className="row">
         {posts.map((post, index) => {
           return (
-            <article className={`col-md-6 ${styles['article']}`} key={post.id}>
-              <h3><Link to={`/post/${post.id}`}>{post.title}</Link></h3>
-            </article>
+            <div className="col-md-6" key={post.id}>
+              <Post post={post} />
+            </div>
           );
         })}
       </div>
