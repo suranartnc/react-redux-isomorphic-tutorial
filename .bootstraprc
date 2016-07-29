@@ -1,0 +1,94 @@
+---
+# Output debugging info
+# loglevel: debug
+
+# Major version of Bootstrap: 3 or 4
+bootstrapVersion: 3
+
+# If Bootstrap version 3 is used - turn on/off custom icon font path
+useCustomIconFontPath: false
+
+# Webpack loaders, order matters
+styleLoaders:
+  - style
+  - css
+  - sass
+
+# Extract styles to stand-alone css file
+# Different settings for different environments can be used,
+# It depends on value of NODE_ENV environment variable
+# This param can also be set in webpack config:
+#   entry: 'bootstrap-loader/extractStyles'
+# extractStyles: false
+env:
+  development:
+    extractStyles: false
+  production:
+    extractStyles: true
+
+# Customize Bootstrap variables that get imported before the original Bootstrap variables.
+# Thus original Bootstrap variables can depend on values from here.
+# preBootstrapCustomizations: ./app/assets/styles/bootstrap/pre-customizations.scss
+
+# This gets loaded after bootstrap/variables is loaded
+# So you can refer to bootstrap variables
+# bootstrapCustomizations: ./app/assets/styles/bootstrap/customizations.scss
+
+# With CSS Modules we load all application styles directly in React components
+# appStyles: ./app/styles/app.scss
+
+### Bootstrap styles
+styles:
+
+  # Mixins
+  mixins: true
+
+  # Reset and dependencies
+  normalize: true
+  print: true
+  glyphicons: true
+
+  # Core CSS
+  scaffolding: true
+  type: true
+  code: true
+  grid: true
+  tables: true
+  forms: true
+  buttons: true
+
+  # Components
+  component-animations: false
+  dropdowns: false
+  button-groups: false
+  input-groups: false
+  navs: false
+  navbar: false
+  breadcrumbs: false
+  pagination: false
+  pager: false
+  labels: false
+  badges: false
+  jumbotron: false
+  thumbnails: false
+  alerts: false
+  progress-bars: false
+  media: false
+  list-group: false
+  panels: false
+  wells: false
+  responsive-embed: false
+  close: false
+
+  # Components w/ JavaScript
+  modals: false
+  tooltip: false
+  popovers: false
+  carousel: false
+
+  # Utility classes
+  utilities: true
+  responsive-utilities: true
+
+### Bootstrap scripts
+scripts: false
