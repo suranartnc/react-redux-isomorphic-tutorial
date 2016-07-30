@@ -11,15 +11,6 @@ const app = express();
 
 app.use(express.static(path.join(process.cwd(), 'static')));
 
-if (!config.isProduction) {
-  const compiler = webpack(webpackConfig);
-  app.use(require('webpack-dev-middleware')(compiler, {
-    noInfo: true,
-    publicPath: webpackConfig.output.publicPath
-  }));
-  app.use(require('webpack-hot-middleware')(compiler));
-}
-
 app.use(serverRendering);
 
 app.listen(config.port, function (err) {
