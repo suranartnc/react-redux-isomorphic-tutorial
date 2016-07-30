@@ -6,7 +6,7 @@ export default (props) => {
 	const { post } = props;
 	return (
 		<article className={styles['article']}>
-          <h3><Link to={`/post/${post.id}`}>{post.title}</Link></h3>
-        </article>
+      <h3><Link to={`/post/${post.id}`}>{post.title}</Link></h3>
+    </article>
 	);
 }

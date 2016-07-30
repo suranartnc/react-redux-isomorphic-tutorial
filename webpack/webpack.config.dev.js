@@ -2,12 +2,16 @@ var path = require('path');
 var webpack = require('webpack');
 var AssetsPlugin = require('assets-webpack-plugin');
 
+var config = require('../src/shared/configs');
+
 module.exports = {
 
   devtool: 'cheap-module-eval-source-map',
 
   entry: [
-    'webpack-hot-middleware/client',
+    'react-hot-loader/patch',
+    `webpack-dev-server/client?http://${config.host}:${config.clientPort}`,
+    'webpack/hot/only-dev-server',
     'bootstrap-loader',
     path.join(process.cwd(), 'src/client.js')
   ],
@@ -16,24 +20,52 @@ module.exports = {
     filename: '[name].js',
     chunkFilename: "[name].js",
     path: path.join(process.cwd(), 'static', 'build'),
-    publicPath: '/build/'
+    publicPath: `http://${config.host}:${config.clientPort}/build/`
   },
 
   module: {
     loaders: [
       {
         test: /\.js?$/,
-        loader: 'babel',
         exclude: /node_modules|\.git/,
-        query: {
-          presets: ['react-hmre']
-        }
+        loaders: [
+          {
+            loader: 'babel-loader',
+            query: {
+              babelrc: false,
+              presets: ["es2015", "stage-0", "react"]
+            }
+          }
+        ]
       }, {
         test: /\.css$/,
-        loader: 'style!css'
+        loaders: [
+          'style-loader',
+          'css-loader'
+        ]
       }, {
         test: /\.scss$/,
-        loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass?outputStyle=expanded&sourceMap!sass-resources'
+        exclude: /node_modules/,
+        loaders: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            query: {
+              module: true,
+              importLoaders: 2,
+              sourceMap: true,
+              localIdentName: '[name]__[local]___[hash:base64:5]'
+            }
+          },
+          {
+            loader: 'sass-loader',
+            query: {
+              outputStyle: 'expanded',
+              sourceMap: true
+            }
+          },
+          'postcss-loader'
+        ]
       }, {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
         loader: 'file-loader',
@@ -52,7 +84,7 @@ module.exports = {
 
   resolve: {
     extensions: ['', '.json', '.js', '.jsx'],
-    root: [
+    modules: [
       path.join(process.cwd(), 'src'),
       path.join(process.cwd(), 'node_modules')
     ]
@@ -80,5 +112,12 @@ module.exports = {
     './src/shared/styles/variables.scss',
     './src/shared/styles/mixins.scss',
     './src/shared/styles/placeholder.scss'
-  ]
+  ],
+
+  devServer: {
+    port: config.clientPort,
+    hot: true,
+    inline: false,
+    historyApiFallback: true
+  }
 };

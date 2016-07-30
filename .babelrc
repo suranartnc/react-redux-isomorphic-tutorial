@@ -5,10 +5,6 @@
     	"react"
     ],
     "plugins": [
-    	"add-module-exports",
-    	"transform-decorators-legacy",
-    	"transform-class-properties",
-    	"syntax-async-functions",
-    	"fast-async"
+        "react-hot-loader/babel"
     ]
 }

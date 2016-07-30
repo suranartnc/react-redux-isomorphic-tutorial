@@ -51,7 +51,7 @@ module.exports = {
 
   resolve: {
     extensions: ['', '.json', '.js', '.jsx'],
-    root: [
+    modules: [
       path.join(process.cwd(), 'src'),
       path.join(process.cwd(), 'node_modules')
     ]
