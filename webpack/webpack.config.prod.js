@@ -27,12 +27,18 @@ module.exports = {
         test: /\.js?$/,
         loader: 'babel',
         exclude: /node_modules|\.git/
-      }, , {
+      }, {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style', 'css')
+        loader: ExtractTextPlugin.extract({ 
+          fallbackLoader: 'style-loader',
+          loader: 'css-loader'
+        })
       }, {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=2&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass!sass-resources')
+        loader: ExtractTextPlugin.extract({ 
+          fallbackLoader: 'style-loader',
+          loader: 'css?modules&importLoaders=2&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass!sass-resources'
+        })
       }, {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
         loader: 'file-loader',
@@ -41,7 +47,7 @@ module.exports = {
         loaders: [
           'file-loader',
           'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}',
-        ],
+        ]
       }, {
         test: /\.json$/,
         loader: 'json-loader',
@@ -64,7 +70,7 @@ module.exports = {
         'BROWSER': true
       }
     }),
-    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
@@ -76,7 +82,8 @@ module.exports = {
       path: path.join(process.cwd(), 'static', 'build'),
       prettyPrint: true
     }),
-    new ExtractTextPlugin('[name].[hash].css', {
+    new ExtractTextPlugin({ 
+      filename: '[name].[hash].css',
       allChunks: true
     })
   ],

@@ -1,21 +1,31 @@
-import React from 'react';
+import config from 'shared/configs';
 
-import { Router, applyRouterMiddleware } from 'react-router';
-import useScroll from 'react-router-scroll';
-import { Provider } from 'react-redux';
-import routes from 'shared/routes';
-
+import React, { Component } from 'react'
+import { Provider } from 'react-redux'
+import createStore from 'shared/store/createStore'
+import routes from 'shared/routes'
 import { DevTools } from 'shared/components';
 
-const Root = ({store, history}) => {
-  return (
-    <Provider store={store}>
-      <div>
-        <Router history={history} routes={routes} render={applyRouterMiddleware(useScroll())} />
-        <DevTools />
-      </div>
-    </Provider>
-  );
-}
+export default class Root extends Component {
+  render() {
+    const { history, initialState } = this.props
+    const store = createStore(history, initialState)
 
-export default Root;
+    if (!config.isProduction) {
+      return (
+        <Provider store={store} key='provider'>
+          <div>
+            {routes(store, history)}
+            <DevTools /> 
+          </div>
+        </Provider>
+      )
+    }
+
+    return (
+      <Provider store={store} key='provider'>
+        {routes(store, history)}
+      </Provider>
+    )
+  }
+}
