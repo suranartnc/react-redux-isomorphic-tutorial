@@ -1,22 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component } from 'react'
+import { render } from 'react-dom'
+import { browserHistory } from 'react-router'
+import { AppContainer } from 'react-hot-loader'
+import Root from 'shared/containers/Root'
 
-import { browserHistory, Router } from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux';
-import routes from 'shared/routes';
+const rootEl = document.getElementById('root')
 
-import { Provider } from 'react-redux';
-import createStore from 'shared/store/createStore';
+render(
+  <AppContainer>
+    <Root history={browserHistory} />
+  </AppContainer>,
+  rootEl
+)
 
-const store = createStore();
+if (module.hot) {
+  module.hot.accept('shared/containers/Root', () => {
+    const NextRootApp = require('shared/containers/Root').default
 
-import { DevTools } from 'shared/components';
-
-ReactDOM.render(
-  <Provider store={store}>
-  	<div>
-  		<Router history={syncHistoryWithStore(browserHistory, store)} routes={routes} />
-    	<DevTools />
-  	</div>
-  </Provider>, 
-  document.getElementById('root'));
+    render(
+      <AppContainer>
+         <NextRootApp history={browserHistory} />
+      </AppContainer>,
+      rootEl
+    )
+  })
+}
