@@ -2,7 +2,7 @@ import config from 'shared/configs';
 
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
-import { Router } from 'react-router'
+import { Router } from 'react-router/es6'
 import { syncHistoryWithStore } from 'react-router-redux'
 import createStore from 'shared/store/createStore'
 import createRoutes from 'shared/routes'
@@ -19,7 +19,7 @@ export default class Root extends Component {
           <div>
             <Router 
               history={syncHistoryWithStore(history, store)}
-              routes={createRoutes(store, history)} />
+              routes={createRoutes(store)} />
             <DevTools /> 
           </div>
         </Provider>
@@ -30,7 +30,7 @@ export default class Root extends Component {
       <Provider store={store} key='provider'>
         <Router 
           history={syncHistoryWithStore(history, store)}
-          routes={createRoutes(store, history)} />
+          routes={createRoutes(store)} />
       </Provider>
     )
   }

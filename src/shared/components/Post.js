@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router/es6';
 import styles from './Post.scss';
 
 const Post = ({post}) => (
