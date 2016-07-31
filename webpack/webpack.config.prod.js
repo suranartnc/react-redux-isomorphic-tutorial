@@ -25,8 +25,16 @@ module.exports = {
     loaders: [
       {
         test: /\.js?$/,
-        loader: 'babel',
-        exclude: /node_modules|\.git/
+        exclude: /node_modules|\.git/,
+        loaders: [
+          {
+            loader: 'babel-loader',
+            query: {
+              babelrc: false,
+              presets: ["es2015-webpack", "stage-0", "react"]
+            }
+          }
+        ]
       }, {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({ 
@@ -70,7 +78,6 @@ module.exports = {
         'BROWSER': true
       }
     }),
-    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {

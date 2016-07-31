@@ -2,9 +2,8 @@ import React from 'react'
 import { syncHistoryWithStore } from 'react-router-redux'
 import { Router, Route, IndexRoute } from 'react-router'
 
-import { App } from './components'
-
 import {
+  App,
   HomePage,
   EntryPage
 } from './containers'
