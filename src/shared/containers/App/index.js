@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 
+import 'shared/styles/core.scss';
+
 class App extends Component {
 
   constructor(props) {

@@ -77,7 +77,7 @@ module.exports = {
         ],
       }, {
         test: /\.json$/,
-        loader: 'json-loader',
+        loader: 'json-loader'
       }
     ]
   },
@@ -108,16 +108,14 @@ module.exports = {
 
   postcss: [],
 
-  sassResources: [
-    './src/shared/styles/variables.scss',
-    './src/shared/styles/mixins.scss',
-    './src/shared/styles/placeholder.scss'
-  ],
-
   devServer: {
     port: config.clientPort,
     hot: true,
     inline: false,
     historyApiFallback: true
+  },
+
+  sassLoader: {
+    includePaths: [path.resolve(process.cwd(), "src/shared/styles")]
   }
 };

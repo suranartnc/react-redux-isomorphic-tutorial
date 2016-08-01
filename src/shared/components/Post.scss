@@ -1,3 +1,6 @@
+@import 'base';
+
 .article {
-	border: 1px solid #ccc;
+	@include clearfix();
+	border: 1px solid $red;
 }
