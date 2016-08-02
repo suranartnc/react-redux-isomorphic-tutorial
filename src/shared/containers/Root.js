@@ -1,30 +1,22 @@
 import config from 'shared/configs';
 
-import React, { Component } from 'react'
-import { Provider } from 'react-redux'
-import createStore from 'shared/store/createStore'
-import routes from 'shared/routes'
-import { DevTools } from 'shared/components';
+import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import { Router } from 'react-router/es6';
+import { syncHistoryWithStore } from 'react-router-redux';
+import createStore from 'shared/store/createStore';
+import createRoutes from 'shared/routes';
 
 export default class Root extends Component {
   render() {
-    const { history, initialState } = this.props
-    const store = createStore(history, initialState)
-
-    if (!config.isProduction) {
-      return (
-        <Provider store={store} key='provider'>
-          <div>
-            {routes(store, history)}
-            <DevTools /> 
-          </div>
-        </Provider>
-      )
-    }
+    const { history } = this.props;
+    const store = createStore(history);
 
     return (
       <Provider store={store} key='provider'>
-        {routes(store, history)}
+        <Router 
+          history={syncHistoryWithStore(history, store)}
+          routes={createRoutes(store)} />
       </Provider>
     )
   }

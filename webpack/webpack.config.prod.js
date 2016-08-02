@@ -10,7 +10,6 @@ var cssnano = require('cssnano');
 module.exports = {
 
   entry: [
-    'bootstrap-loader',
     path.join(process.cwd(), 'src/client.js')
   ],
 
@@ -45,7 +44,7 @@ module.exports = {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract({ 
           fallbackLoader: 'style-loader',
-          loader: 'css?modules&importLoaders=2&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass!sass-resources'
+          loader: 'css?modules&importLoaders=2&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass'
         })
       }, {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
@@ -58,7 +57,7 @@ module.exports = {
         ]
       }, {
         test: /\.json$/,
-        loader: 'json-loader',
+        loader: 'json-loader'
       }
     ]
   },
@@ -100,9 +99,7 @@ module.exports = {
     cssnano()
   ],
 
-  sassResources: [
-    './src/shared/styles/variables.scss',
-    './src/shared/styles/mixins.scss',
-    './src/shared/styles/placeholder.scss'
-  ]
+  sassLoader: {
+    includePaths: [path.resolve(process.cwd(), "src/shared/styles")]
+  }
 };

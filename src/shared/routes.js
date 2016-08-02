@@ -1,20 +1,35 @@
-import React from 'react'
-import { syncHistoryWithStore } from 'react-router-redux'
-import { Router, Route, IndexRoute } from 'react-router'
+import App from 'shared/containers/App'
 
-import {
-  App,
-  HomePage,
-  EntryPage
-} from './containers'
+const errorLoading = (err) => {
+  console.error('Dynamic page loading failed', err);
+};
 
-export default (store, history) => {
-  return (
-    <Router history={syncHistoryWithStore(history, store)}>
-      <Route path='/' component={App}>
-        <IndexRoute component={HomePage} />
-        <Route path="post/:id" component={EntryPage} />
-      </Route>
-    </Router>
-  )
+const loadModule = (cb) => (componentModule) => {
+  cb(null, componentModule.default);
+};
+
+export default function createRoutes(store) {
+  return [
+    {
+      path: '/',
+      component: App,
+      indexRoute: {
+        getComponent(nextState, cb) {
+          System.import('shared/containers/HomePage')
+            .then(loadModule(cb))
+            .catch(errorLoading);
+        }         
+      },
+      childRoutes: [
+        {
+          path: 'post/:id',
+          getComponent(nextState, cb) {
+            System.import('shared/containers/EntryPage')
+              .then(loadModule(cb))
+              .catch(errorLoading);
+          }
+        }
+      ]
+    }
+  ]
 }

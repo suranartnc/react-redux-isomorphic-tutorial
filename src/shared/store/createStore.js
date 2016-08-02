@@ -2,24 +2,22 @@ import config from 'shared/configs';
 
 import { createStore, applyMiddleware, compose } from 'redux';
 
-import { routerMiddleware } from 'react-router-redux'
 import apiMiddleware from 'shared/middlewares/apiMiddleware';
+import { routerMiddleware } from 'react-router-redux'
+import createLogger from 'redux-logger';
+
 import rootReducer from 'shared/reducer';
-import { DevTools } from 'shared/components';
 
 const middlewares = [
   apiMiddleware, 
   routerMiddleware(history)
 ];
 
-let enhancer = applyMiddleware(...middlewares);
-
 if (!config.isProduction) {
-  enhancer = compose(
-    applyMiddleware(...middlewares),
-    DevTools.instrument()
-  );
+  middlewares.push(createLogger());
 }
+
+let enhancer = applyMiddleware(...middlewares);
 
 export default (history, initialState) => {
   const store = createStore(
