@@ -30,6 +30,7 @@ module.exports = {
             loader: 'babel-loader',
             query: {
               babelrc: false,
+              plugins: ["lodash"],
               presets: ["es2015-webpack", "stage-0", "react"]
             }
           }
