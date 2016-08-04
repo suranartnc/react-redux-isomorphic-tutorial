@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Header from 'shared/containers/App/Header';
 
+import CSSModules from 'react-css-modules';
+import styles from './Page.scss';
+
 const createPage = (initialState = {}) => (BaseComponent) => {
 	class Page extends Component {
 		constructor(props) {
@@ -14,7 +17,7 @@ const createPage = (initialState = {}) => (BaseComponent) => {
 				);
 			}
 			return (
-				<div>
+				<div styleName="wrapper">
 				  <Header />
           <div className="container">
             <BaseComponent {...this.props} />
@@ -23,7 +26,7 @@ const createPage = (initialState = {}) => (BaseComponent) => {
 			);
 		}
 	}
-	return Page;
+	return CSSModules(Page, styles);
 }
 
 export default createPage;
