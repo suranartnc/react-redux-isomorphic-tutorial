@@ -30,6 +30,7 @@ module.exports = {
             loader: 'babel-loader',
             query: {
               babelrc: false,
+              plugins: ["lodash"],
               presets: ["es2015-webpack", "stage-0", "react"]
             }
           }
@@ -95,7 +96,7 @@ module.exports = {
   ],
 
   postcss: [
-    autoprefixer({ browsers: ['last 2 versions'] }),
+    autoprefixer({ browsers: ['last 2 versions', 'IE > 10'] }),
     cssnano()
   ],
 
