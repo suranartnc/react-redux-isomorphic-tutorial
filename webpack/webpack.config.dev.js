@@ -52,7 +52,6 @@ module.exports = {
             query: {
               module: true,
               importLoaders: 2,
-              sourceMap: true,
               localIdentName: '[name]__[local]___[hash:base64:5]'
             }
           },
