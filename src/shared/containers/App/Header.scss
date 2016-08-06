@@ -1,0 +1,18 @@
+.logo {
+  width: 50px;
+  height: 50px;
+}
+
+.login {
+  background: url('/images/react.svg');
+  background-size: contain;
+  width: 50px;
+  height: 50px;
+}
+
+.search {
+  &:before {
+    font-family: 'fontawesome';
+    content: "\f002";
+  }
+}

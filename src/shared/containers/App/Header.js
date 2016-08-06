@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router/es6';
 
+import CSSModules from 'react-css-modules';
+import styles from './Header.scss';
+
 class Header extends Component {
 
   render() {
@@ -10,14 +13,14 @@ class Header extends Component {
           <div className="row">
             <div className="col-xs-12 col-md-4">
               <Link to={`/`}>
-                Logo
+                <img styleName="logo" src="/images/react.svg" alt="" />
               </Link>
             </div>
             <div className="col-xs-12 col-md-8">
-              <div className="pull-right">
+              <div styleName="login" className="pull-right">
                 Login
               </div>
-              <div className="pull-right">
+              <div styleName="search" className="pull-right">
                 Search
               </div>
             </div>
@@ -28,4 +31,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default CSSModules(Header, styles);

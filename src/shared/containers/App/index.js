@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 
+import 'shared/styles/modules/_fonts.scss';
 import 'shared/styles/app.scss';
 
 class App extends Component {
@@ -21,4 +22,4 @@ class App extends Component {
   }
 }
 
-module.exports = App;
+export default App;
