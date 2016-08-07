@@ -3,6 +3,7 @@ import { Link } from 'react-router/es6';
 
 import CSSModules from 'react-css-modules';
 import styles from './Header.scss';
+import logo from './images/webpack.png';
 
 class Header extends Component {
 
@@ -13,7 +14,7 @@ class Header extends Component {
           <div className="row">
             <div className="col-xs-12 col-md-4">
               <Link to={`/`}>
-                <img styleName="logo" src="/images/react.svg" alt="" />
+                <img styleName="logo" src={logo} alt="" />
               </Link>
             </div>
             <div className="col-xs-12 col-md-8">

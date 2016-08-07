@@ -101,6 +101,6 @@ module.exports = {
   ],
 
   sassLoader: {
-    includePaths: [path.resolve(process.cwd(), "src/shared/styles")]
+    includePaths: [path.resolve(process.cwd(), "src/shared/theme/scss")]
   }
 };

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 
-import 'shared/styles/modules/_fonts.scss';
-import 'shared/styles/app.scss';
+import 'shared/theme/scss/modules/_fonts.scss';
+import 'shared/theme/scss/app.scss';
 
 class App extends Component {
 
