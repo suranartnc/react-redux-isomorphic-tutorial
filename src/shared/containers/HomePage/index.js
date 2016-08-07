@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 
 import * as postActions from 'shared/modules/post/postActions';
@@ -32,6 +32,16 @@ function mapStateToProps({ post }) {
   return {
     posts: post.latest
   }
+}
+
+HomePage.propTypes = {
+  posts: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired,
+    tags: PropTypes.array
+  })).isRequired,
+  getPostLatest: PropTypes.func.isRequired
 }
 
 export default connect(mapStateToProps, postActions)(Page({

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 
 import * as postActions from 'shared/modules/post/postActions';
@@ -13,6 +13,7 @@ class EntryPage extends Component {
 
   render() {
     const { post } = this.props
+    console.log(post);
     return (
       <div>
         <article>
@@ -28,6 +29,17 @@ function mapStateToProps({ post }) {
   return {
     post: post.active
   }
+}
+
+EntryPage.propTypes = {
+  params: PropTypes.shape({
+    id: PropTypes.string.isRequired
+  }),
+  post: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    body: PropTypes.string
+  }).isRequired
 }
 
 export default connect(mapStateToProps, postActions)(Page()(EntryPage));
