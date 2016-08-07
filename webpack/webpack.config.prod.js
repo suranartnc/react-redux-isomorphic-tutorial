@@ -1,11 +1,10 @@
 var path = require('path');
+
 var webpack = require('webpack');
 
-var AssetsPlugin = require('assets-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-
 var autoprefixer = require('autoprefixer');
-var cssnano = require('cssnano');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var AssetsPlugin = require('assets-webpack-plugin');
 
 module.exports = {
 
@@ -15,9 +14,9 @@ module.exports = {
 
   output: {
     filename: '[name].[hash].js',
-    chunkFilename: "[name].[chunkhash].js",
+    chunkFilename: '[name].[chunkhash].js',
     path: path.join(process.cwd(), 'static', 'build'),
-    publicPath: "/build/"
+    publicPath: '/build/'
   },
 
   module: {
@@ -37,15 +36,17 @@ module.exports = {
         ]
       }, {
         test: /\.css$/,
+        exclude: /node_modules/,
         loader: ExtractTextPlugin.extract({ 
           fallbackLoader: 'style-loader',
           loader: 'css-loader'
         })
       }, {
         test: /\.scss$/,
+        exclude: /node_modules/,
         loader: ExtractTextPlugin.extract({ 
           fallbackLoader: 'style-loader',
-          loader: 'css?modules&importLoaders=2&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass'
+          loader: 'css?modules&importLoaders=2&localIdentName=[name]__[local]___[hash:base64:5]&minimize!postcss!sass'
         })
       }, {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
@@ -54,8 +55,8 @@ module.exports = {
         test: /\.(jpg|png|gif)$/,
         loaders: [
           'file-loader',
-          'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}',
-        ]
+          'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}'
+        ],
       }, {
         test: /\.json$/,
         loader: 'json-loader'
@@ -75,7 +76,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production'),
-        'BROWSER': true
+        'BROWSER': JSON.stringify(true)
       }
     }),
     new webpack.optimize.DedupePlugin(),
@@ -84,23 +85,22 @@ module.exports = {
         warnings: false
       }
     }),
+    new ExtractTextPlugin({ 
+      filename: '[name].[hash].css',
+      allChunks: true
+    }),
     new AssetsPlugin({
       filename: 'assets.json',
       path: path.join(process.cwd(), 'static', 'build'),
       prettyPrint: true
-    }),
-    new ExtractTextPlugin({ 
-      filename: '[name].[hash].css',
-      allChunks: true
     })
   ],
 
   postcss: [
-    autoprefixer({ browsers: ['last 2 versions', 'IE > 10'] }),
-    cssnano()
+    autoprefixer({ browsers: ['last 2 versions', 'IE > 10'] })
   ],
 
   sassLoader: {
-    includePaths: [path.resolve(process.cwd(), "src/shared/styles")]
+    includePaths: [path.resolve(process.cwd(), "src/shared/theme/scss")]
   }
 };

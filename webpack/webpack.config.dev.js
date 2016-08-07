@@ -69,10 +69,7 @@ module.exports = {
         loader: 'file-loader',
       }, {
         test: /\.(jpg|png|gif)$/,
-        loaders: [
-          'file-loader',
-          'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}',
-        ],
+        loaders: 'file-loader'
       }, {
         test: /\.json$/,
         loader: 'json-loader'
@@ -94,7 +91,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('development'),
-        'BROWSER': true
+        'BROWSER': JSON.stringify(true)
       }
     }),
     new AssetsPlugin({
@@ -114,6 +111,6 @@ module.exports = {
   },
 
   sassLoader: {
-    includePaths: [path.resolve(process.cwd(), "src/shared/styles")]
+    includePaths: [path.resolve(process.cwd(), "src/shared/theme/scss")]
   }
 };
