@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Helmet from 'react-helmet';
 
 import 'shared/theme/scss/modules/_fonts.scss';
@@ -21,5 +21,9 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  children: PropTypes.node
+};
 
 export default App;
