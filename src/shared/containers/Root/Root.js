@@ -10,7 +10,7 @@ import createRoutes from 'shared/routes';
 class Root extends Component {
   render() {
     const { history } = this.props;
-    const store = createStore(history);
+    const store = createStore(history, window.__INITIAL_STATE__);
 
     return (
       <Provider store={store} key="provider">
