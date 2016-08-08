@@ -1,5 +1,13 @@
 import { App } from 'shared/containers';
 
+if (typeof System === "undefined") {
+  var System = {
+    import: function(path) {
+      return Promise.resolve(require(path));
+    }
+  };
+}
+
 const errorLoading = (err) => {
   console.error('Dynamic page loading failed', err);
 };
