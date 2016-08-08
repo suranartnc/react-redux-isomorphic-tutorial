@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import * as postActions from 'shared/modules/post/postActions';
 
 import { Page, Post } from 'shared/components';
-import styles from './Home.scss';
+import styles from './HomePage.scss';
 
 class HomePage extends Component {
 

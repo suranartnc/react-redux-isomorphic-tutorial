@@ -1,2 +1,2 @@
-export Page from './Page';
-export Post from './Post';
+export Page from './Page/Page';
+export Post from './Post/Post';

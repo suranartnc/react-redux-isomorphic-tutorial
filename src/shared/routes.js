@@ -1,4 +1,4 @@
-import App from 'shared/containers/App'
+import { App } from 'shared/containers';
 
 const errorLoading = (err) => {
   console.error('Dynamic page loading failed', err);
@@ -15,7 +15,7 @@ export default function createRoutes(store) {
       component: App,
       indexRoute: {
         getComponent(nextState, cb) {
-          System.import('shared/containers/HomePage')
+          System.import('shared/containers/HomePage/HomePage')
             .then(loadModule(cb))
             .catch(errorLoading);
         }         
@@ -24,7 +24,7 @@ export default function createRoutes(store) {
         {
           path: 'post/:id',
           getComponent(nextState, cb) {
-            System.import('shared/containers/EntryPage')
+            System.import('shared/containers/EntryPage/EntryPage')
               .then(loadModule(cb))
               .catch(errorLoading);
           }
