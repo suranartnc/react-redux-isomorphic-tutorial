@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import * as postActions from 'shared/modules/post/postActions';
 
-import Page from 'shared/containers/App/components/Page/Page';
+import { Page } from 'shared/components';
 
 class EntryPage extends Component {
 
