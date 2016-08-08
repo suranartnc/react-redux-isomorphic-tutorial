@@ -3,23 +3,23 @@ import config from 'shared/configs';
 import { createStore, applyMiddleware, compose } from 'redux';
 
 import apiMiddleware from 'shared/middlewares/apiMiddleware';
-import { routerMiddleware } from 'react-router-redux'
+import { routerMiddleware } from 'react-router-redux';
 import createLogger from 'redux-logger';
 
 import rootReducer from 'shared/reducer';
 
-const middlewares = [
-  apiMiddleware, 
-  routerMiddleware(history)
-];
-
-if (!config.isProduction) {
-  middlewares.push(createLogger());
-}
-
-let enhancer = applyMiddleware(...middlewares);
-
 export default (history, initialState) => {
+  const middlewares = [
+    apiMiddleware, 
+    routerMiddleware(history)
+  ];
+
+  if (!config.isProduction) {
+    middlewares.push(createLogger());
+  }
+
+  const enhancer = applyMiddleware(...middlewares);
+
   const store = createStore(
     rootReducer,
     initialState,
@@ -32,5 +32,5 @@ export default (history, initialState) => {
       )
     })
   }
-  return store
+  return store;
 }

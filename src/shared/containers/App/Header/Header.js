@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router/es6';
+import { Link } from 'react-router';
 
 import CSSModules from 'react-css-modules';
 import styles from './Header.scss';
