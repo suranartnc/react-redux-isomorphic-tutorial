@@ -34,6 +34,12 @@ function mapStateToProps({ post }) {
   }
 }
 
+HomePage.need = [
+  (params) => {
+    return postActions.getPostLatest();
+  }
+];
+
 HomePage.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
@@ -44,6 +50,4 @@ HomePage.propTypes = {
   getPostLatest: PropTypes.func.isRequired
 }
 
-export default connect(mapStateToProps, postActions)(Page({
-  // mode: 'full'
-})(HomePage));
+export default connect(mapStateToProps, postActions)(HomePage);
