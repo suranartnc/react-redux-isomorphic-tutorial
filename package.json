@@ -13,7 +13,7 @@
   },
   "betterScripts": {
     "dev": {
-      "command": "node .",
+      "command": "nodemon .",
       "env": {
         "NODE_ENV": "development",
         "NODE_PATH": "./src"
@@ -86,6 +86,7 @@
     "json-loader": "^0.5.4",
     "json-server": "^0.8.16",
     "node-sass": "^3.8.0",
+    "nodemon": "^1.10.0",
     "postcss-loader": "^0.9.1",
     "react-css-modules": "^3.7.9",
     "redux-logger": "^2.6.1",
