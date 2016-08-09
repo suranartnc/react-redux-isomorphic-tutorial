@@ -7,7 +7,7 @@ import createMemoryHistory from 'react-router/lib/createMemoryHistory';
 import { syncHistoryWithStore } from 'react-router-redux';
 
 import createStore from 'shared/store/createStore';
-import createRoutes from 'shared/routes';
+import createRoutes from 'shared/routes/routes.prod';
 import { fetchComponent } from './fetchComponent.js';
 
 const assets = require('../../static/build/assets.json');

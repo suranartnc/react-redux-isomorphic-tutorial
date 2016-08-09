@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { browserHistory, match, Router } from 'react-router';
 import { Provider } from 'react-redux';
 
-import getRoutes from 'shared/routes';
+import getRoutes from 'shared/routes/routes.prod';
 import createStore from 'shared/store/createStore';
 import { syncHistoryWithStore } from 'react-router-redux';
 

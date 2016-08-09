@@ -9,7 +9,7 @@ var AssetsPlugin = require('assets-webpack-plugin');
 module.exports = {
 
   entry: [
-    path.join(process.cwd(), 'src/client.js')
+    path.join(process.cwd(), 'src/client/client.prod.js')
   ],
 
   output: {
