@@ -1,4 +1,6 @@
-import { App } from 'shared/containers';
+import React from 'react';
+import { Route, IndexRoute } from 'react-router';
+import { App, HomePage, EntryPage } from 'shared/containers';
 
 if (typeof System === "undefined") {
   var System = {
@@ -17,6 +19,7 @@ const loadModule = (cb) => (componentModule) => {
 };
 
 export default function createRoutes(store) {
+
   return [
     {
       path: '/',
