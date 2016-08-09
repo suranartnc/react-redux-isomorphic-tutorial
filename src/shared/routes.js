@@ -1,4 +1,4 @@
-import { App } from 'shared/containers';
+import App from 'shared/containers/App/App';
 
 if (typeof System === "undefined") {
   var System = {

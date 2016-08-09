@@ -1,7 +1,9 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-import { App, HomePage, EntryPage } from 'shared/containers';
+import App from 'shared/containers/App/App';
+import HomePage from 'shared/containers/HomePage/HomePage';
+import EntryPage from 'shared/containers/EntryPage/EntryPage';
 
 export default function createRoutes(store) {
   return (

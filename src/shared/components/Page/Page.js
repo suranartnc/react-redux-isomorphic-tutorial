@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header } from 'shared/containers';
+import Header from 'shared/containers/App/Header/Header';
 
 import CSSModules from 'react-css-modules';
 import styles from './Page.scss';
