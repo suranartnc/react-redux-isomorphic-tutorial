@@ -14,7 +14,7 @@ class EntryPage extends Component {
   render() {
     const { post } = this.props
     return (
-      <div className="EntryPage">
+      <div>
         <article>
           <h3>{post.title}</h3>
           <div dangerouslySetInnerHTML={{__html: post.body}} />
