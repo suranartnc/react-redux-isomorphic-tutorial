@@ -12,7 +12,7 @@ module.exports = {
     'react-hot-loader/patch',
     `webpack-dev-server/client?http://${config.host}:${config.clientPort}`,
     'webpack/hot/only-dev-server',
-    path.join(process.cwd(), 'src/client.js')
+    path.join(process.cwd(), 'src/client.dev.js')
   ],
 
   output: {
