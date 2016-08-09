@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { browserHistory } from 'react-router/es6';
 import { AppContainer } from 'react-hot-loader';
-import { Root } from 'shared/containers';
+import Root from 'shared/containers/Root/Root';
 
 const rootEl = document.getElementById('root');
 
