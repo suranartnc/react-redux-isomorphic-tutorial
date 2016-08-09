@@ -32,7 +32,7 @@ module.exports = {
             loader: 'babel-loader',
             query: {
               babelrc: false,
-              presets: ["es2015-webpack", "stage-0", "react"]
+              presets: ["es2015-webpack", "react", "stage-0"]
             }
           }
         ]
