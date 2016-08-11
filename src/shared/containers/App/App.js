@@ -4,6 +4,8 @@ import Helmet from 'react-helmet';
 import 'shared/theme/scss/modules/_fonts.scss';
 import 'shared/theme/scss/app.scss';
 
+import Header from 'shared/containers/App/Header/Header';
+
 class App extends Component {
 
   constructor(props) {
@@ -16,6 +18,7 @@ class App extends Component {
         <Helmet
             title="React Redux Isomorphic Tutorial"
         />
+        <Header />
         { this.props.children }
       </div>
     );
