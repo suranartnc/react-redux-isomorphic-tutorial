@@ -1,4 +1,3 @@
-:global {
-  @import 'vendor/normalize';
-  @import 'modules/grids';
-}
+@import 'vendor/normalize';
+@import 'modules/_fonts.scss';
+@import 'modules/grids';

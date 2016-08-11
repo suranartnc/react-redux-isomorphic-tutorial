@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Helmet from 'react-helmet';
 
-import 'shared/theme/scss/modules/_fonts.scss';
 import 'shared/theme/scss/app.scss';
 
 import Header from 'shared/containers/App/Header/Header';
