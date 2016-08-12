@@ -1,5 +1,6 @@
+@import 'modules/fonts.scss';
+
 :global {
   @import 'vendor/normalize';
-  @import 'modules/fonts.scss';
   @import 'modules/grids';
 }
