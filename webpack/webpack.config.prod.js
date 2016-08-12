@@ -9,7 +9,7 @@ var AssetsPlugin = require('assets-webpack-plugin');
 module.exports = {
 
   entry: [
-    path.join(process.cwd(), 'src/client.js')
+    path.join(process.cwd(), 'src/client/client.prod.js')
   ],
 
   output: {
@@ -29,8 +29,13 @@ module.exports = {
             loader: 'babel-loader',
             query: {
               babelrc: false,
-              plugins: ["lodash"],
-              presets: ["es2015-webpack", "stage-0", "react"]
+              presets: ["es2015-webpack", "react", "stage-0"],
+              plugins: [
+                "lodash", 
+                "transform-react-constant-elements",
+                "transform-react-remove-prop-types", 
+                "transform-react-pure-class-to-function"
+              ]
             }
           }
         ]

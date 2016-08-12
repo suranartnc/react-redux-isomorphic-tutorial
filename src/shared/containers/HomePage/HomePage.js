@@ -3,8 +3,7 @@ import { connect } from 'react-redux'
 
 import * as postActions from 'shared/modules/post/postActions';
 
-import { Page, Post } from 'shared/components';
-import styles from './HomePage.scss';
+import Post from 'shared/components/Post/Post';
 
 class HomePage extends Component {
 
@@ -34,6 +33,12 @@ function mapStateToProps({ post }) {
   }
 }
 
+HomePage.need = [
+  (params) => {
+    return postActions.getPostLatest();
+  }
+];
+
 HomePage.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
@@ -44,6 +49,4 @@ HomePage.propTypes = {
   getPostLatest: PropTypes.func.isRequired
 }
 
-export default connect(mapStateToProps, postActions)(Page({
-  // mode: 'full'
-})(HomePage));
+export default connect(mapStateToProps, postActions)(HomePage);

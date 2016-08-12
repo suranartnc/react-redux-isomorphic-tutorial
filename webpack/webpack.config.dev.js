@@ -12,7 +12,7 @@ module.exports = {
     'react-hot-loader/patch',
     `webpack-dev-server/client?http://${config.host}:${config.clientPort}`,
     'webpack/hot/only-dev-server',
-    path.join(process.cwd(), 'src/client.js')
+    path.join(process.cwd(), 'src/client/client.dev.js')
   ],
 
   output: {
@@ -32,7 +32,7 @@ module.exports = {
             loader: 'babel-loader',
             query: {
               babelrc: false,
-              presets: ["es2015-webpack", "stage-0", "react"]
+              presets: ["es2015-webpack", "react", "stage-0"]
             }
           }
         ]

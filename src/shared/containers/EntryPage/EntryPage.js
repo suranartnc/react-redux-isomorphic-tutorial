@@ -3,8 +3,6 @@ import { connect } from 'react-redux'
 
 import * as postActions from 'shared/modules/post/postActions';
 
-import { Page } from 'shared/components';
-
 class EntryPage extends Component {
 
   componentDidMount() {
@@ -13,7 +11,6 @@ class EntryPage extends Component {
 
   render() {
     const { post } = this.props
-    console.log(post);
     return (
       <div>
         <article>
@@ -31,6 +28,12 @@ function mapStateToProps({ post }) {
   }
 }
 
+EntryPage.need = [
+  (params) => {
+    return postActions.getPostById(params.id);
+  }
+];
+
 EntryPage.propTypes = {
   params: PropTypes.shape({
     id: PropTypes.string.isRequired
@@ -42,4 +45,4 @@ EntryPage.propTypes = {
   }).isRequired
 }
 
-export default connect(mapStateToProps, postActions)(Page()(EntryPage));
+export default connect(mapStateToProps, postActions)(EntryPage);
