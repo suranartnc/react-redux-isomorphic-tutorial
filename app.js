@@ -6,6 +6,10 @@ require('babel-register')({
         "config": "./webpack/webpack.config.babel.js",
         "verbose": false
       }
+    ], [
+      "css-modules-transform", {
+        "extensions": [".css", ".scss"]
+      }
     ]
   ]
 });
